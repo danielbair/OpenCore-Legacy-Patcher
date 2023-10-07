@@ -268,15 +268,15 @@ class AutomaticSysPatch:
             logging.info("- Skipping Auto Patcher Launch Agent, not supported when running from source")
             return
 
+        # Verify our binary isn't located in '/Library/Application Support/Dortania/'
+        # As we'd simply be duplicating ourselves
         if self.constants.launcher_binary.startswith("/Library/Application Support/Dortania/"):
             logging.info("- Skipping Auto Patcher Launch Agent, already installed")
             return
 
-        # Verify our binary isn't located in '/Library/Application Support/Dortania/'
-        # As we'd simply be duplicating ourselves
         logging.info("- Installing Auto Patcher Launch Agent")
 
-        if not Path("Library/Application Support/Dortania").exists():
+        if not Path("/Library/Application Support/Dortania").exists():
             logging.info("- Creating /Library/Application Support/Dortania/")
             utilities.process_status(utilities.elevated(["mkdir", "-p", "/Library/Application Support/Dortania"], stdout=subprocess.PIPE, stderr=subprocess.STDOUT))
 
