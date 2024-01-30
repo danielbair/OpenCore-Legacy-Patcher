@@ -60,6 +60,9 @@ The main goal of generating prebuilt binaries is to strip the requirement of a l
 ```sh
 # Install PyInstaller
 pip3 install pyinstaller
+pip3 uninstall charset-normalizer
+pip3 download --platform macosx_10_9_universal2 --only-binary=:all: charset-normalizer
+pip3 install charset_normalizer-*-macosx_10_9_universal2.whl
 # Move into project directory
 cd ~/Developer/OpenCore-Legacy-Patcher/
 # Create the pyinstaller based Application
